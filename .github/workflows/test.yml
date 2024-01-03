@@ -9,15 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/cache@v3
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-            build
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
       - name: Checkout project sources
         uses: actions/checkout@v3
       - name: Build
@@ -25,22 +16,20 @@ jobs:
         with:
             gradle-version: 7.4
             arguments: assemble --info
-    
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gradle-build-artifact
+          path: build/
+          retention-days: 1
   test:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/cache@v3
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-            build
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
       - name: Checkout project sources
         uses: actions/checkout@v3
+      - uses: actions/download-artifact@v4
+        with:
+          name: gradle-build-artifact
       - name: Build
         uses: gradle/gradle-build-action@v2
         with:
