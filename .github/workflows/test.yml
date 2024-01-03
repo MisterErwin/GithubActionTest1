@@ -51,9 +51,11 @@ jobs:
           name: gradle-build-artifact
           path: build/
       - run: ls -l build/
-      - run: ls -l .gradle/buildOutputCleanup/
       - name: Gradle Test
         uses: gradle/gradle-build-action@v2
         with:
             gradle-version: 7.4
             arguments: test --info
+      - run: ls -l .
+      - run: ls -l .gradle/
+      - run: ls -l .gradle/buildOutputCleanup/
