@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: [0, 42] # one should succeed, the other fail
+        returncode: [0, 42] # one should succeed, the other fail
     steps:
       - name: Workflow Dispatch
         uses: convictional/trigger-workflow-and-wait@v1.6.1
