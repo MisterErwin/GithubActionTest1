@@ -9,10 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Repository Dispatch
-        uses: peter-evans/repository-dispatch@v2
+      - name: Workflow Dispatch
+        uses: convictional/trigger-workflow-and-wait@v1.6.1
         with:
-          token: ${{ secrets.PAT }}
-          repository: MisterErwin/GithubActionTest2
-          event-type: trigger_downstream
+          owner: MisterErwin
+          repo: GithubActionTest2
+          github_token: ${{ secrets.PAT }}
+          #event-type: trigger_downstream
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
