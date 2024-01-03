@@ -4,6 +4,9 @@ on:
     branches: main
     paths-ignore:
       - "*.md"
+
+env:
+  GRADLE_BUILD_ACTION_CACHE_KEY_JOB: "test-cache-${{ github.head_ref }}.${{ github.sha }}"
       
 jobs:
   build:
