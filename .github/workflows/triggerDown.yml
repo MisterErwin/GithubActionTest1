@@ -13,6 +13,6 @@ jobs:
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.PAT }}
-          repository: MisterErwin/GithubActionTest1
+          repository: MisterErwin/GithubActionTest2
           event-type: trigger_downstream
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
