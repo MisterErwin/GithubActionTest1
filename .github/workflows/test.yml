@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/cache@v3
+        if: false
         with:
           path: |
             ~/.gradle/caches
@@ -37,6 +38,7 @@ jobs:
       - name: Checkout project sources
         uses: actions/checkout@v3
       - uses: actions/cache@v3
+        if: false
         with:
           path: |
             ~/.gradle/caches
