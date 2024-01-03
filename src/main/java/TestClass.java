@@ -4,6 +4,6 @@ public class TestClass {
     }
 
     public String getName() {
-        return "Name";
+        return "Name"; // 12
     }
 }
