@@ -46,11 +46,11 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
-      - uses: actions/download-artifact@v4
-        with:
-          name: gradle-build-artifact
-          path: build/
-      - run: ls -l build/
+      - run: ls -l .
+ #     - uses: actions/download-artifact@v4
+ #       with:
+ #         name: gradle-build-artifact
+ #         path: build/
       - name: Gradle Test
         uses: gradle/gradle-build-action@v2
         with:
@@ -59,3 +59,4 @@ jobs:
       - run: ls -l .
       - run: ls -l .gradle/
       - run: ls -l .gradle/buildOutputCleanup/
+      - run: ls -l build/
