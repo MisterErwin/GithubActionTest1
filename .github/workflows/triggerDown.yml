@@ -16,4 +16,4 @@ jobs:
           repo: GithubActionTest2
           github_token: ${{ secrets.PAT }}
           #event-type: trigger_downstream
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+          client_payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
