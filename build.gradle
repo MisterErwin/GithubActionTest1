@@ -22,3 +22,9 @@ application {
 tasks.named('test') {
     useJUnitPlatform() // <6>
 }
+
+tasks.withType(JavaCompile) {
+    configure(options) {
+        options.compilerArgs << '-verbose' // examples
+    }
+}
