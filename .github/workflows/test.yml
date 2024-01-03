@@ -24,7 +24,7 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
             gradle-version: 7.4
-            arguments: assemble --info
+            arguments: assemble --info --build-cache 
       - uses: actions/upload-artifact@v4
         with:
           name: gradle-build-artifact
@@ -55,7 +55,7 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
             gradle-version: 7.4
-            arguments: test --info
+            arguments: test --info --build-cache 
       - run: ls -l .
       - run: ls -l .gradle/
       - run: ls -l .gradle/buildOutputCleanup/
