@@ -17,3 +17,4 @@ jobs:
           github_token: ${{ secrets.PAT }}
           #event-type: trigger_downstream
           client_payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+          workflow_file_name: wfdispatch.yml
