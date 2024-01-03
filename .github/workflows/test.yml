@@ -1,0 +1,45 @@
+name: Trigger Downstreams
+on:
+  push:
+    branches: main
+    paths-ignore:
+      - "*.md"
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+      - name: Checkout project sources
+        uses: actions/checkout@v3
+      - name: Build
+        uses: gradle/gradle-build-action@v2
+        with:
+            gradle-version: 7.4
+            arguments: assemble --info
+    
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+      - name: Checkout project sources
+        uses: actions/checkout@v3
+      - name: Build
+        uses: gradle/gradle-build-action@v2
+        with:
+            gradle-version: 7.4
+            arguments: test --info
